@@ -8,6 +8,9 @@ app.use(express.static("public"));
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
+const todayTodos = [];
+const workTodos = [];
+
 function greetingType() {
     let currentHour = new Date().getHours();
     if (currentHour > 6 && currentHour < 13) {
@@ -21,22 +24,26 @@ function greetingType() {
     }
 }
 
+let hourGreeting = greetingType();
+
 app.get("/", (req, res) => {
-    res.render("today.ejs", data);
+    res.render("today.ejs", { greeting: hourGreeting, todos: todayTodos });
 })
 
 app.get("/work", (req, res) => {
-    res.render("work.ejs");
+    res.render("work.ejs", { greeting: hourGreeting, todos: workTodos });
 })
 
-app.post("/todaySubmit", (req, res) => {
-    res.render("today.ejs", data);
+app.post("/", (req, res) => {
+    todayTodos.push(req.body["todo"]);
+    res.render("today.ejs", { greeting: hourGreeting, todos: todayTodos });
+})
+
+app.post("/work", (req, res) => {
+    workTodos.push(req.body["todo"]);
+    res.render("today.ejs", { greeting: hourGreeting, todos: workTodos });
 })
 
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);
 })
-
-const data = {
-    greeting: greetingType()
-}
