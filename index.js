@@ -41,7 +41,7 @@ app.post("/", (req, res) => {
 
 app.post("/work", (req, res) => {
     workTodos.push(req.body["todo"]);
-    res.render("today.ejs", { greeting: hourGreeting, todos: workTodos });
+    res.render("work.ejs", { greeting: hourGreeting, todos: workTodos });
 })
 
 app.listen(port, () => {
