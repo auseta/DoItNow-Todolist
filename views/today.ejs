@@ -1,17 +1,17 @@
 <%- include("partials/header.ejs") %>
 
-        <p>You have 
-            <% if (locals.todos) { %>
-                <%= todos.length %>
-            <% } else { %>
-                0
-            <% } %> 
-            tasks pending today...
-        </p>
+    <p>You have 
+        <% if (locals.todos) { %>
+            <%= todos.length %>
+        <% } else { %>
+            0
+        <% } %> 
+        tasks pending today...
+    </p>
     </header>
 
     <main class="d-flex">
-        <form action="/todaySubmit" method="post">
+        <form action="/" method="post">
             <input class="font" type="text" name="todo" id="todo"><button type="submit" class="font">Add >></button>
         </form>
 

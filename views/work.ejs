@@ -1,1 +1,31 @@
-<h1>Soy el Work</h1>
+<%- include("partials/header.ejs") %>
+
+    <p>You have 
+        <% if (locals.todos) { %>
+            <%= todos.length %>
+        <% } else { %>
+            0
+        <% } %> 
+        work/s pending today...
+    </p>
+    </header>
+
+    <main class="d-flex">
+        <form action="/work" method="post">
+            <input class="font" type="text" name="todo" id="todo"><button type="submit" class="font">Add >></button>
+        </form>
+
+        <% if (locals.todos) { %>
+        <% for (todo of todos) { %>
+                <div class="todo-card mt-30 d-flex">
+                    <input type="checkbox">
+                    <p>
+                        <%= todo %>
+                    </p>
+                </div>
+        <% } %>
+        <% } %>
+
+    </main>
+
+<%- include("partials/footer.ejs") %>
