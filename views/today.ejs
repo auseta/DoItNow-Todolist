@@ -1,16 +1,33 @@
 <%- include("partials/header.ejs") %>
-        <p>You have 3 tasks pending today...</p>
+
+        <p>You have 
+            <% if (locals.todos) { %>
+                <%= todos.length %>
+            <% } else { %>
+                0
+            <% } %> 
+            tasks pending today...
+        </p>
     </header>
 
-    <main>
+    <main class="d-flex">
         <form action="/todaySubmit" method="post">
-            <input type="text" name="todo" id="todo"><button type="submit">Add >></button>
+            <input class="font" type="text" name="todo" id="todo"><button type="submit" class="font">Add >></button>
         </form>
 
-        
+        <% if (locals.todos) { %>
+           <% for (todo of todos) { %>
+                <div class="todo-card mt-30 d-flex">
+                    <input type="checkbox">
+                    <p>
+                        <%= todo %>
+                    </p>
+                </div>
+           <% } %>
+        <% } %>
 
     </main>
-</body>
-</html>
+
+<%- include("partials/footer.ejs") %>
 
 
