@@ -11,20 +11,20 @@
     </header>
 
     <main class="d-flex">
-        <form action="/" method="post">
-            <input class="font" type="text" name="todo" id="todo"><button type="submit" class="font">Add >></button>
+        <form action="/submitToday" method="post">
+            <input class="font" type="text" name="todo" id="todo" maxlength="35"><button type="submit" class="font">Add >></button>
         </form>
 
-        <% if (locals.todos) { %>
-           <% for (todo of todos) { %>
-                <div class="todo-card mt-30 d-flex">
-                    <input type="checkbox">
-                    <p>
-                        <%= todo %>
+        <div class="notebook">
+            <% if (locals.todos) { %>
+                <% for (todo of todos) { %>
+                     <p class="d-flex">
+                        <input type="checkbox">
+                        <span><%= todo %></span>
                     </p>
-                </div>
-           <% } %>
-        <% } %>
+                <% } %>
+             <% } %>
+        </div>
 
     </main>
 
