@@ -2,11 +2,14 @@ body {
   margin: 0;
   padding-left: 35px;
   padding-right: 35px;
+
   height: 100vh;
+  font-family: "Montserrat", sans-serif;
+
   display: grid;
   grid-template-rows: repeat(3, 1fr);
+  
   background: rgb(0, 0, 0);
-  font-family: "Montserrat", sans-serif;
   background: linear-gradient(
     133deg,
     rgba(0, 0, 0, 1) 2%,
@@ -30,13 +33,21 @@ h2 {
   font-size: 2.5rem;
 }
 
+form {
+  margin-bottom: 20px;
+  text-align: center;
+} 
+
 a {
   text-decoration: none;
   color: #000000;
 }
 
+/* ///////--HEADER--/////// */
+
 header p {
   text-align: center;
+  margin-bottom: 0;
   color: #afad73;
   font-style: italic;
 }
@@ -46,84 +57,150 @@ ul {
   justify-content: space-between;
   align-items: center;
   gap: 25px;
+
   padding: 0 20px;
 }
 
 nav ul li {
   list-style: none;
+  
   font-size: 1.2rem;
   padding: 5px 8px;
+  
   border: 1px solid #afad73;
+  border-radius: 3px;
+  
   background-color: #afad73;
   color: black;
-  border-radius: 3px;
 }
+
+/* ///////--MAIN--/////// */
 
 main {
     flex-direction: column;
     align-items: center;
+
     border-top: 2px solid #acacac;
+    
     margin-top: 50px;
     padding-top: 60px;
 }
 
+input[type="text"], button[type="submit"] {
+  box-sizing: content-box;
+}
+
 input[type="text"] {
-    border: none;
-    padding-left: 10px;
-    width: 250px;
-    max-width: calc(100% - 20%);
-    height: 30px;
-    outline: none;
-    font-size: 1rem;
-    font-weight: 500;
-    font-style: italic;
+  border: none;
+
+  padding-left: 10px;
+
+  width: 250px;
+  max-width: calc(100% - 20%);
+  height: 30px;
+
+  outline: none;
+
+  font-size: 1rem;
+  font-weight: 500;
+  font-style: italic;
 }
 
 button[type="submit"] {
     border: none;
-    min-width: 60px;
-    margin-left: 10px;
+    
     height: 30px;
+    min-width: 60px;
+    
+    margin-left: 10px;
+    
     font-size: 1rem;
     font-weight: 500;
     font-style: italic;
+    
     background-color: #afad73;
 }
 
-form {
-  margin-bottom: 20px;
+.notebook {
+  margin-top: 20px;
+  padding-bottom: 20px;
+  
+  font-family: "Courier Prime", monospace;
+  font-weight: 700;
+
+  width: 400px;
+  height: 600px;
+  
+  background: rgb(236,211,178);
+  background: linear-gradient(180deg, rgba(236,211,178,1) 0%, rgba(239,181,107,1) 42%, rgba(181,135,86,1) 92%);
+  background-attachment: fixed;
+  
+  overflow-y: scroll;
 }
 
-.todo-card {
+.notebook p {
+  padding-left: 5px;
+
   flex-direction: row-reverse;
   justify-content: space-between;
-  padding: 0px 20px;
-  width: 350px;
-  max-width: calc(100% - 20%);
-  font-style: italic;
-  font-weight: 800;
-  background-color: transparent;
-  border: 1px solid #afad73;
-  border-radius: 8px;
-  background-image: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
-  box-shadow: -57px -55px 173px -82px rgba(0,0,0,0.3) inset;
-  -webkit-box-shadow: -57px -55px 173px -82px rgba(0,0,0,0.3) inset;
-  -moz-box-shadow: -57px -55px 173px -82px rgba(0,0,0,0.3) inset;
+  align-items: center ;
+  
+  border-bottom: 1px solid black;
+  margin: 0 10px;
+  padding-top: 20px;
+  padding-bottom: 10px;
 }
 
-input:checked + p {
-  text-decoration: line-through;
+
+input[type="checkbox"] {
+  appearance: none;
+  position: relative;
+
+  border-radius: 50%;
+  border: 1px solid #000000ba;
+  background-color: transparent;
+  
+  width: 30px;
+  height: 30px;
 }
+
+input[type="checkbox"]:checked::after {
+  content: "";
+  position: absolute;
+  
+  border: solid #379522;
+  border-width: 0 0.30em 0.30em 0;
+
+  transform: rotate(45deg);
+  
+  width: 0.50em;
+  height: 1em;
+
+  left: 0.6em;
+  top: 0.25em;
+}
+
+input:checked + span {
+  text-decoration: line-through;
+  text-decoration-thickness: 0.2rem;
+  text-decoration-color: #ad1212b0;
+}
+
+/* ///////--FOOTER--/////// */
 
 footer {
   text-align: center;
   align-self: self-end;
+  
   margin-top: 50px;
   margin-bottom: 30px;
-  font-size: 1.2rem;
+  
+  font-size: 1rem;
   font-style: italic;
   color: #ffffff;
 }
+
+/* --------------------------------------- */
 
 .highlight {
   color: #cacaa6;
@@ -141,6 +218,8 @@ footer {
 .d-flex {
   display: flex;
 }
+
+/* ///////--MEDIA-QUERIES--/////// */
 
 @media (max-width: 526px) {
   nav {
@@ -165,8 +244,31 @@ footer {
 
 @media (max-width: 410px) {
 
+  body {
+    padding: 0;
+  }
+
+  main {
+    padding-top: 10px;
+    border: none;
+  }
+
   input[type="text"] {
     width:  190px;
+  }
+
+  .notebook {
+    width: 325px;
+  }
+
+  input[type="checkbox"] {
+    width: 25px;
+    height: 25px;
+  }
+
+  input[type="checkbox"]:checked::after {
+    left: 0.5em;
+    top: 0.05em;
   }
 
 }
